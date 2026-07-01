@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "toolbox": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "some-mcp-toolbox"
+      ],
+      "description": "Various tools."
+    },
+    "latest-thing": {
+      "command": "uvx",
+      "args": [
+        "cool-mcp@latest"
+      ],
+      "description": "Cool stuff."
+    }
+  }
+}
