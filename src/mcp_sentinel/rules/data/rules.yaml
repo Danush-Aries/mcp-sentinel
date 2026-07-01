@@ -1,0 +1,88 @@
+# Auto-generated from rules/base.py META — the runtime source of truth.
+# Do not hand-edit; edit META and regenerate.
+rules:
+  - id: MCPS001
+    title: 'Instruction-override phrases in tool description'
+    severity: high
+    category: poisoning
+    remediation: 'Descriptions must describe, not command. Remove imperative meta-instructions aimed at the model.'
+  - id: MCPS002
+    title: 'Invisible / control unicode in description'
+    severity: high
+    category: poisoning
+    remediation: 'Strip zero-width, bidi and tag characters; re-author the description in printable UTF-8.'
+  - id: MCPS003
+    title: 'Encoded payload blob in description/params'
+    severity: medium
+    category: poisoning
+    remediation: 'Tool docs should never carry encoded data; remove the blob.'
+  - id: MCPS004
+    title: 'Hidden-channel / exfiltration markers in description'
+    severity: medium
+    category: poisoning
+    remediation: 'Remove covert-behaviour language and hardcoded destination URLs.'
+  - id: MCPS010
+    title: 'Shell / exec capability'
+    severity: high
+    category: capability
+    remediation: 'Constrain to an allowlist of commands or sandbox the tool.'
+  - id: MCPS011
+    title: 'Arbitrary file write / delete'
+    severity: high
+    category: capability
+    remediation: 'Scope writes to a fixed workspace; deny path traversal; make opt-in.'
+  - id: MCPS012
+    title: 'Unbounded network egress'
+    severity: medium
+    category: capability
+    remediation: 'Add a host allowlist to the tool schema; block arbitrary URLs.'
+  - id: MCPS013
+    title: 'Credential / secret access tool'
+    severity: high
+    category: capability
+    remediation: 'Remove direct secret-reading tools; broker via a scoped manager.'
+  - id: MCPS020
+    title: 'Known-format API key in env/args'
+    severity: critical
+    category: secret
+    remediation: 'Move to an env-var reference / secret store and rotate the key now.'
+  - id: MCPS021
+    title: 'High-entropy value in env (generic secret)'
+    severity: high
+    category: secret
+    remediation: 'Replace the literal with ${ENV_VAR} indirection; never commit secrets.'
+  - id: MCPS022
+    title: 'Plaintext password / basic-auth in URL'
+    severity: high
+    category: secret
+    remediation: 'Use token auth via env; strip inline credentials from URLs.'
+  - id: MCPS030
+    title: 'Unpinned npx/uvx package'
+    severity: high
+    category: supplychain
+    remediation: 'Pin an exact version (and npm integrity hash); avoid floating installs.'
+  - id: MCPS031
+    title: 'Floating tag / version range'
+    severity: medium
+    category: supplychain
+    remediation: 'Pin to an exact, reviewed released version instead of @latest/ranges.'
+  - id: MCPS032
+    title: 'Insecure http:// source'
+    severity: high
+    category: supplychain
+    remediation: 'Use https://; verify TLS; prefer signed registry sources.'
+  - id: MCPS033
+    title: 'Unknown / unscoped publisher'
+    severity: low
+    category: supplychain
+    remediation: 'Prefer scoped/official packages; review source before install.'
+  - id: MCPS040
+    title: 'Capability broader than declared purpose'
+    severity: medium
+    category: scope
+    remediation: 'A read-only server should not expose exec/write/secret tools.'
+  - id: MCPS041
+    title: 'Excess tool count / wildcard scope'
+    severity: low
+    category: scope
+    remediation: 'Reduce to a least-privilege tool set; justify each tool.'

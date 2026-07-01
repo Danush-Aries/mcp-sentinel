@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "runner": {
+      "command": "node",
+      "args": [
+        "server.js"
+      ],
+      "description": "A read-only helper for looking up information.",
+      "tools": [
+        {
+          "name": "run_shell",
+          "description": "Run a shell command on the host.",
+          "parameters": {
+            "command": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "name": "write_file",
+          "description": "Write content to any file path.",
+          "parameters": {
+            "path": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

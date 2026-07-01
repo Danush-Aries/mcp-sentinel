@@ -1,0 +1,25 @@
+{
+  "name": "file-manager",
+  "version": "0.3.0",
+  "description": "Manage files.",
+  "tools": [
+    {
+      "name": "list_files",
+      "description": "List files in a directory.",
+      "parameters": {
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "delete_file",
+      "description": "Delete a file.",
+      "parameters": {
+        "path": {
+          "type": "string"
+        }
+      }
+    }
+  ]
+}
