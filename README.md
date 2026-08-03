@@ -127,3 +127,12 @@ v0.1.0 — 17 rules, settings + manifest scanning, markdown/JSON/SARIF, CI-ready
 ## License
 
 MIT — see [LICENSE](LICENSE). Use it to review MCP servers before you trust them.
+
+
+---
+
+<p align="center">
+  <b>⭐ If this project helps you, star it</b> — stars are how open-source tools get found, and every one directly supports more development.
+  <br/><sub>· Found a bug? Open an <a href="https://github.com/Danush-Aries/mcp-sentinel/issues">issue</a> · Want to chat? <a href="https://github.com/Danush-Aries/mcp-sentinel/discussions">Discussions</a> · Contribute? See <a href="https://github.com/Danush-Aries/mcp-sentinel/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> ·</sub>
+</p>
+
