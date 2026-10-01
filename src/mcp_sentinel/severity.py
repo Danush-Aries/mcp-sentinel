@@ -25,5 +25,5 @@ class Severity(IntEnum):
         return "note"
 
     @classmethod
-    def from_str(cls, value: str) -> "Severity":
+    def from_str(cls, value: str) -> Severity:
         return cls[value.strip().upper()]

@@ -7,7 +7,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 import typer
 
@@ -20,7 +19,7 @@ from .severity import Severity
 app = typer.Typer(add_completion=False, help="Static security linter for the MCP trust boundary.")
 
 
-def _csv(value: Optional[str]) -> Optional[list[str]]:
+def _csv(value: str | None) -> list[str] | None:
     if not value:
         return None
     return [x.strip() for x in value.split(",") if x.strip()]
@@ -33,7 +32,7 @@ def version() -> None:
 
 
 @app.command()
-def rules(category: Optional[str] = typer.Option(None, "--category", "-c",
+def rules(category: str | None = typer.Option(None, "--category", "-c",
           help="filter by category: poisoning|capability|secret|supplychain|scope")) -> None:
     """List the rule registry (the same rule-as-data the engine runs)."""
     for r in load_rules():
@@ -47,13 +46,13 @@ def scan(
     path: str = typer.Argument(..., help="settings.json, MCP manifest, or '-' for stdin"),
     input: str = typer.Option("auto", "--input", "-i", help="auto|settings|manifest|stdio"),
     format: str = typer.Option("markdown", "--format", "-f", help="markdown|json|sarif"),
-    output: Optional[Path] = typer.Option(None, "--output", "-o", help="write report to FILE"),
+    output: Path | None = typer.Option(None, "--output", "-o", help="write report to FILE"),
     fail_on: str = typer.Option("medium", "--fail-on", help="exit-code threshold"),
     strict: bool = typer.Option(False, "--strict", help="any HIGH+ escalates exit code to 2"),
     offline: bool = typer.Option(False, "--offline", help="hard-disable any network/LLM path"),
     llm: bool = typer.Option(False, "--llm", help="enable optional LLM deep-check (needs API key)"),
-    select: Optional[str] = typer.Option(None, "--select", help="only these rule IDs (comma-sep)"),
-    ignore: Optional[str] = typer.Option(None, "--ignore", help="exclude these rule IDs (comma-sep)"),
+    select: str | None = typer.Option(None, "--select", help="only these rule IDs (comma-sep)"),
+    ignore: str | None = typer.Option(None, "--ignore", help="exclude these rule IDs (comma-sep)"),
 ) -> None:
     """Scan an MCP config/manifest and report security findings.
 
