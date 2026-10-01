@@ -8,7 +8,7 @@ from .json_out import render_json
 from .markdown import render_markdown
 from .sarif import render_sarif
 
-__all__ = ["render", "render_markdown", "render_json", "render_sarif"]
+__all__ = ["render", "render_json", "render_markdown", "render_sarif"]
 
 
 def render(report: Report, fmt: str = "markdown") -> str:

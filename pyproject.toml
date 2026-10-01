@@ -49,3 +49,7 @@ pythonpath = ["src"]
 line-length = 100
 target-version = "py310"
 src = ["src", "tests"]
+
+[tool.ruff.lint.per-file-ignores]
+# typer declares options via call defaults; the CLI boundary deliberately catches everything
+"src/mcp_sentinel/cli.py" = ["B008", "BLE001"]

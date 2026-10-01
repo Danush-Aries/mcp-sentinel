@@ -6,8 +6,9 @@ Kept dependency-free (stdlib only) so it is the stable center of the package.
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Callable, Literal
+from typing import Literal
 
 from . import __version__
 from .severity import Severity
@@ -66,7 +67,7 @@ class Finding:
     references: list[str] = field(default_factory=list)
     fingerprint: str = ""
 
-    def with_fingerprint(self) -> "Finding":
+    def with_fingerprint(self) -> Finding:
         """Return a copy with a stable fingerprint derived from rule + location."""
         if self.fingerprint:
             return self

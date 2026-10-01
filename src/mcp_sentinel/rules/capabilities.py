@@ -9,11 +9,11 @@ import re
 from ..models import Finding, Location, ScanTarget
 from .base import finding, iter_tools, param_names, tool_text
 
-_EXEC = re.compile(r"\b(exec|shell|bash|sh|command|run_code|eval|subprocess|os\.system)\b", re.I)
-_WRITE = re.compile(r"\b(write_file|delete|rm|unlink|put_file|save|overwrite)\b", re.I)
-_NET = re.compile(r"\b(fetch|http_request|curl|request|webhook|upload|download|post)\b", re.I)
+_EXEC = re.compile(r"\b(exec|shell|bash|sh|command|run_code|eval|subprocess|os\.system)\b", re.IGNORECASE)
+_WRITE = re.compile(r"\b(write_file|delete|rm|unlink|put_file|save|overwrite)\b", re.IGNORECASE)
+_NET = re.compile(r"\b(fetch|http_request|curl|request|webhook|upload|download|post)\b", re.IGNORECASE)
 _CRED = re.compile(
-    r"\b(get_env|read_secret|credentials?|tokens?|keychain|password|dotenv|aws_credentials)\b", re.I
+    r"\b(get_env|read_secret|credentials?|tokens?|keychain|password|dotenv|aws_credentials)\b", re.IGNORECASE
 )
 
 

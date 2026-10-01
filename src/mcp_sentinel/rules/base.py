@@ -107,7 +107,7 @@ def tool_text(t: ToolSpec) -> str:
 
 def param_names(t: ToolSpec) -> set[str]:
     params = t.parameters if isinstance(t.parameters, dict) else {}
-    return {str(k).lower() for k in params.keys()}
+    return {str(k).lower() for k in params}
 
 
 # --- primitive detectors -------------------------------------------------
@@ -141,7 +141,7 @@ def find_base64_blob(s: str) -> str | None:
         chunk = m.group(0)
         try:
             base64.b64decode(chunk, validate=True)
-        except Exception:
+        except ValueError:  # binascii.Error subclasses ValueError
             continue
         return chunk
     return None

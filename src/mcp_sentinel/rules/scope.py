@@ -7,7 +7,7 @@ from ..models import Finding, Location, ScanTarget, ServerSpec
 from .base import finding, param_names
 from .capabilities import check_mcps010, check_mcps011, check_mcps013
 
-_READONLY = re.compile(r"\b(read|read-only|search|lookup|weather|docs|documentation|query|browse)\b", re.I)
+_READONLY = re.compile(r"\b(read|read-only|search|lookup|weather|docs|documentation|query|browse)\b", re.IGNORECASE)
 _MAX_TOOLS = 25
 
 
